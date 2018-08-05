@@ -33,6 +33,8 @@ module.exports = class Machine {
         }).pop();
         if (selectedItem.quantity < 1) {
             return 'The item you selected is unavailable';
+        } else if (selectedItem.item.price > this.totalDeposit) {
+            return 'Your deposit is insufficient.  Please add Rs ' + (selectedItem.item.price - this.totalDeposit) + ' for this item';
         }
 
     }
