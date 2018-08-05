@@ -25,4 +25,17 @@ describe('the vending machine', () => {
         // assert
         expect(actual).to.deep.equal(expected);
     });
+
+    it('should display additional Rs deposited', () => {
+        // setup
+        const machine = new Machine();
+        const expected = 'You have deposited Rs 150';
+        machine.totalDeposit = 100;
+
+        // exercise
+        const actual = machine.deposit(50);
+
+        // assert
+        expect(actual).to.deep.equal(expected);
+    });
 });

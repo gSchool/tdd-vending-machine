@@ -1,5 +1,6 @@
 module.exports = class Machine {
     constructor() {
+        this.totalDeposit = 0;
         this.inventory = [
             {'crisps': 100},
             {'chocolate': 350},
@@ -14,6 +15,7 @@ module.exports = class Machine {
     }
 
     deposit(denomination) {
-        return 'You have deposited Rs ' + denomination;
+        this.totalDeposit += denomination;
+        return 'You have deposited Rs ' + this.totalDeposit;
     }
 };
