@@ -35,6 +35,19 @@ module.exports = class Machine {
             return 'The item you selected is unavailable';
         } else if (selectedItem.item.price > this.totalDeposit) {
             return 'Your deposit is insufficient.  Please add Rs ' + (selectedItem.item.price - this.totalDeposit) + ' for this item';
+        } else {
+            let changeDue = this.totalDeposit - selectedItem.item.price;
+            const denominatons = [500, 100, 50, 20, 10];
+            const change = [];
+            for (let denom of denominatons) {
+                const numOfBills = Math.floor(changeDue / denom);
+                for (let bills = 0; bills < numOfBills; bills++) {
+                    change.push(denom);
+                    changeDue = changeDue - denom;
+                }
+            }
+            const vend = {item: selectedItem.item.name, change: change};
+            return vend;
         }
 
     }
