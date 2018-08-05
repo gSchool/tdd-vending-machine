@@ -12,4 +12,8 @@ module.exports = class Machine {
     seeSelections() {
         return this.inventory;
     }
+
+    deposit(denomination) {
+        return 'You have deposited Rs ' + denomination;
+    }
 };
